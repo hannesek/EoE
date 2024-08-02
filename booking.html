@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment - East of Eden</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo">East Of Eden</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/index.html" class="navbar__links">HOME</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/artists.html" class="navbar__links">ARTISTS</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/faq.htm" class="navbar__links">FAQ</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="/" class="navbar__links">CONTACT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Booking Section -->
+    <div class="booking-section">
+        <h1>Book Your Appointment</h1>
+        <form id="booking-form">
+            <!-- Personal Information -->
+            <h2>Personal Information</h2>
+
+            <label for="full-name">Full Name:</label>
+            <input type="text" id="full-name" name="full-name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <!-- Tattoo Details -->
+            <h2>Tattoo Details</h2>
+
+            <label for="preferred-artist">Preferred Artist:</label>
+            <select id="preferred-artist" name="preferred-artist" required>
+                <option value="">Select Artist</option>
+                <option value="artist1">Artist 1</option>
+                <option value="artist2">Artist 2</option>
+                <option value="artist3">Artist 3</option>
+                <!-- Add more artists as needed -->
+            </select>
+
+            <label for="tattoo-style">Tattoo Style:</label>
+            <select id="tattoo-style" name="tattoo-style" required>
+                <option value="">Select Style</option>
+                <option value="traditional">Traditional</option>
+                <option value="realistic">Realistic</option>
+                <option value="japanese">Japanese</option>
+                <option value="tribal">Tribal</option>
+                <!-- Add more styles as needed -->
+            </select>
+
+            <label for="tattoo-placement">Tattoo Placement:</label>
+            <select id="tattoo-placement" name="tattoo-placement" required>
+                <option value="">Select Placement</option>
+                <option value="arm">Arm</option>
+                <option value="leg">Leg</option>
+                <option value="back">Back</option>
+                <option value="chest">Chest</option>
+                <!-- Add more placements as needed -->
+            </select>
+
+            <label for="tattoo-size">Tattoo Size:</label>
+            <select id="tattoo-size" name="tattoo-size" required>
+                <option value="">Select Size</option>
+                <option value="small">Small</option>
+                <option value="medium">Medium</option>
+                <option value="large">Large</option>
+            </select>
+
+            <label for="reference-images">Reference Images/Inspiration:</label>
+            <input type="file" id="reference-images" name="reference-images" accept="image/*">
+
+            <fieldset>
+                <legend>Color or Black & Gray:</legend>
+                <label>
+                    <input type="radio" name="color-scheme" value="color" required> Color
+                </label>
+                <label>
+                    <input type="radio" name="color-scheme" value="black-gray" required> Black & Gray
+                </label>
+            </fieldset>
+
+            <label for="specific-details">Any Specific Details or Requests:</label>
+            <textarea id="specific-details" name="specific-details" rows="4"></textarea>
+
+            <!-- Appointment Preferences -->
+            <h2>Appointment Preferences</h2>
+
+            <label for="preferred-date">Preferred Date:</label>
+            <input type="date" id="preferred-date" name="preferred-date" required>
+
+            <label for="preferred-time">Preferred Time:</label>
+            <select id="preferred-time" name="preferred-time" required>
+                <option value="">Select Time</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+            </select>
+
+            <label for="flexible-schedule">Flexible Schedule?</label>
+            <input type="checkbox" id="flexible-schedule" name="flexible-schedule" value="yes">
+
+            <!-- Additional Information -->
+            <h2>Additional Information</h2>
+
+            <fieldset>
+                <legend>Have you been tattooed at our studio before?</legend>
+                <label>
+                    <input type="radio" name="previous-client" value="yes" required> Yes
+                </label>
+                <label>
+                    <input type="radio" name="previous-client" value="no" required> No
+                </label>
+            </fieldset>
+
+            <label for="referral-source">How did you hear about us?</label>
+            <select id="referral-source" name="referral-source" required>
+                <option value="">Select Source</option>
+                <option value="website">Website</option>
+                <option value="social-media">Social Media</option>
+                <option value="word-of-mouth">Word of Mouth</option>
+                <option value="other">Other</option>
+            </select>
+
+            <fieldset>
+                <legend>Agreement to Terms:</legend>
+                <label>
+                    <input type="checkbox" name="terms-agreement" required> I agree to the studio's terms and policies.
+                </label>
+            </fieldset>
+
+            <button type="submit" class="button">Submit Booking Request</button>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
