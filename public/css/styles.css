@@ -1,0 +1,649 @@
+/* Fonts */
+@font-face {
+    font-family: 'Bodoni';
+    src: url('../assets/fonts/BodoniSvtyTwoSCITCTT-Book.woff.otf');
+}
+
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Bodoni', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    opacity: 0;
+    background-color: black; 
+    color: white;
+    transition: opacity 0.1s ease-in-out;
+}
+
+body.fade-in{
+    opacity: 1;
+}
+
+body.fade-out {
+    opacity: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+    background-color: black;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar__container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+#navbar__logo {
+    background-color: #fff;
+    background-image: linear-gradient(to top, #ffffff 0%, #979797 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+.navbar__item {
+    height: 80px;
+}
+
+.navbar__links {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+}
+
+.navbar__links:hover {
+    color: #b4b4b4;
+    transition: all 0.3s ease;
+}
+
+.navbar__toggle .bar {
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background: #fff;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+#mobile-menu {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    transform: translate(5%, 20%);
+}
+
+#mobile-menu.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+#mobile-menu.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+#mobile-menu.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile View */
+@media screen and (max-width: 960px) {
+    .navbar__container {
+        justify-content: space-between;
+        height: 80px;
+        max-width: 1300px;
+        padding: 0;
+    }
+
+    .navbar__menu {
+        display: grid;
+        grid-template-columns: auto;
+        margin: 0;
+        width: 100%;
+        position: absolute;
+        top: -1000px;
+        opacity: 0;
+        transition: all 0.5s ease;
+        height: 50vh;
+        z-index: -1;
+        background: black;
+    }
+
+    .navbar__menu.active {
+        top: 100%;
+        opacity: 1;
+        z-index: 99;
+        font-size: 1.6rem;
+    }
+
+    #navbar__logo {
+        padding-left: 25px;
+    }
+
+    .navbar__item {
+        width: 100%;
+    }
+
+    .navbar__links {
+        text-align: center;
+        padding: 2rem;
+        width: 100%;
+        display: table;
+    }
+
+    .navbar__btn {
+        padding-bottom: 2rem;
+    }
+
+    .button {
+        width: 80%;
+        height: 80px;
+        margin: 0;
+    }
+}
+
+/* Hero Section */
+.hero {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0);
+    position: relative;
+    padding: 0 5%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.back-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%); /* Center the video */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+.hero__content {
+    text-align: center;
+    z-index: 1; /* Ensure content appears above the video */
+}
+
+.hero__content h1 {
+    font-size: 80px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.hero__content a {
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    font-size: 24px;
+    border: 2px solid #fff;
+    padding: 14px 20px;
+    border-radius: 3px;
+    margin-top: 20px;
+    transition: all 0.5s ease;
+}
+
+.hero__content a:hover {
+    color: #000;
+    background-color: #b3b3b3;
+}
+
+@media (max-width: 960px) {
+    .hero__content h1 {
+        font-size: 60px; /* Reduce font size on smaller screens */
+    }
+
+    .hero__content a {
+        font-size: 20px; /* Reduce font size on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .hero__content h1 {
+        font-size: 40px; /* Further reduce font size on very small screens */
+    }
+
+    .hero__content a {
+        font-size: 18px; /* Further reduce font size on very small screens */
+    }
+}
+
+/* About Section */
+
+/* About Banner */
+.about-banner {
+    background-color: #000000; /* Grey background color */
+    color: white;
+    padding: 20px 0;
+    font-size: 2.2rem;
+    text-align: center;
+    cursor: pointer; /* Indicate it's clickable */
+    transition: background-color 0.3s;
+}
+
+.about-banner:hover {
+    background-color: #555; /* Darker grey on hover */
+}
+
+.about {
+    background-color: #000000; /* Dark background to match the theme */
+    color: white; /* White text color */
+    padding: 20px 20px; /* Padding around the section */
+    text-align: center; /* Center-align text */
+}
+
+.about-container {
+    max-width: 800px; /* Limit the width of the about section */
+    margin: 0 auto; /* Center the content horizontally */
+}
+
+
+.about p {
+    font-size: 1.2rem; /* Font size for the paragraph */
+    margin-bottom: 20px; /* Space below each paragraph */
+    line-height: 1.6; /* Line height for better readability */
+}
+
+@media (max-width: 960px) {
+    .about h2 {
+        font-size: 2rem; /* Reduce font size on smaller screens */
+    }
+
+    .about p {
+        font-size: 1rem; /* Reduce font size on smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .about h2 {
+        font-size: 1.5rem; /* Further reduce font size on very small screens */
+    }
+
+    .about p {
+        font-size: 0.9rem; /* Further reduce font size on very small screens */
+    }
+}
+
+/* Footer */
+footer {
+    background-color: black; /* Set background color to black */
+    padding: 40px 20px; /* Padding around the content for spacing */
+    font-family: 'Bodoni', sans-serif; /* Use the Bodoni font defined earlier */
+    z-index: 1000; /* Ensure it appears above other content */
+    width: 100%; /* Full width */
+}
+
+.footer-content {
+    display: grid; /* Use grid layout for footer content */
+    text-align: center;
+    grid-template-columns: repeat(4, 1fr); /* Create 4 equal columns */
+    max-width: 1200px; /* Maximum width for the footer content */
+    margin: 0 auto; /* Center the content horizontally */
+    gap: 20px; /* Add spacing between columns */
+}
+
+.footer-column {
+    padding: 0 20px; /* Padding within columns */
+}
+
+.footer-column p {
+    margin: 10px 0; /* Margin for spacing between paragraphs */
+    color: white; /* Set text color to white */
+    font-size: 1.1rem; /* Slightly larger font size for better legibility */
+}
+
+footer a {
+    color: #ffffff; /* Use a distinct color for links */
+    text-decoration: none; /* Remove underline from links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Underline on hover for links */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Responsive styling */
+@media (max-width: 1200px) {
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr); /* Change to 3 columns */
+    }
+}
+
+@media (max-width: 960px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr); /* Change to 2 columns */
+    }
+
+    .footer-column {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    footer {
+        padding: 20px 10px; /* Reduce padding for very small screens */
+    }
+
+    .footer-column p {
+        font-size: 1rem; /* Reduce font size for very small screens */
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr; /* Change to 1 column */
+    }
+}
+
+/* BOOKING */
+.booking-section {
+    width: 90%;
+    max-width: 900px; /* Set the max width to make the form wider */
+    margin: 40px auto; /* Center the form with margin */
+    padding: 40px; /* Adjust padding inside the booking section */
+    background-color: rgba(34, 34, 34, 0.9); /* Semi-transparent dark background for contrast */
+    border-radius: 10px; /* Slightly rounded corners for the form */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+/* Headings */
+.booking-section {
+    max-width: 900px; /* Set the max width to make the form wider */
+    margin: 40px auto; /* Center the form with margin */
+    padding: 40px; /* Adjust padding inside the booking section */
+    background-color: rgba(34, 34, 34, 0.9); /* Semi-transparent dark background for contrast */
+    border-radius: 10px; /* Slightly rounded corners for the form */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+/* Headings */
+.booking-section h1 {
+    text-align: center; /* Center the main heading */
+    margin-bottom: 30px; /* Space below the heading */
+    font-size: 2.5rem; /* Larger font size for main heading */
+    color: #f77062; /* Primary color for headings */
+}
+
+.booking-section h2 {
+    margin-top: 30px; /* Space above section headings */
+    margin-bottom: 20px; /* Space below section headings */
+    font-size: 1.8rem; /* Font size for section headings */
+    color: #f77062; /* Primary color for headings */
+}
+
+/* Labels and Inputs */
+label {
+    display: block; /* Labels take full width */
+    margin: 15px 0 5px; /* Margin around labels */
+    font-size: 1.1rem; /* Slightly larger font size for labels */
+    color: #ffffff; /* White color for labels */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="file"],
+select,
+textarea {
+    width: 100%; /* Full-width inputs */
+    padding: 12px; /* More padding inside inputs */
+    margin-bottom: 20px; /* More space below inputs */
+    border: 1px solid #555; /* Border color */
+    border-radius: 6px; /* Slightly rounded corners for inputs */
+    background-color: #444; /* Slightly lighter dark background for inputs */
+    color: white; /* White text for inputs */
+    font-size: 1.1rem; /* Slightly larger font size for inputs */
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 10px; /* More space between radio/checkbox and label */
+}
+
+fieldset {
+    margin-bottom: 20px; /* Space below fieldsets */
+    padding: 15px; /* Add padding to fieldsets */
+    border: 1px solid #555; /* Border color for fieldsets */
+    border-radius: 6px; /* Rounded corners for fieldsets */
+    background-color: #333; /* Dark background for fieldsets */
+}
+
+legend {
+    margin-bottom: 10px; /* Space below legends */
+    font-size: 1.1rem; /* Font size for legends */
+    color: #ffffff; /* White color for legends */
+    padding: 0 10px; /* Padding around the legend text */
+    border-radius: 4px; /* Slightly rounded corners for the legend background */
+    background-color: #444; /* Dark background for legends */
+}
+
+label.inline {
+    display: inline-block;
+    width: auto; /* Let the width be auto for inline labels */
+    margin-right: 20px; /* Space between inline labels */
+}
+
+/* Textarea */
+textarea {
+    resize: vertical; /* Allow vertical resizing only */
+}
+
+/* Buttons */
+.button {
+    display: block; /* Block display to make centering easier */
+    margin: 30px auto 0; /* Center the button and add margin on top */
+    padding: 12px 24px; /* More padding inside buttons */
+    background-color: #f77062; /* Button background color */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 6px; /* Rounded corners for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 1.2rem; /* Slightly larger font size for buttons */
+    transition: background-color 0.3s ease; /* Transition effect */
+}
+
+.button:hover {
+    background-color: #e65a50; /* Change color on hover */
+}
+
+/* Responsive styling */
+@media (max-width: 960px) {
+    .booking-section {
+        padding: 30px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .booking-section {
+        padding: 20px; /* Reduce padding for very small screens */
+    }
+}
+
+/* Terms Section */
+.terms-section {
+    max-width: 800px; /* Limit the width of the terms section */
+    margin: 40px auto; /* Center the section with margin */
+    padding: 20px; /* Add padding inside the terms section */
+    background-color: rgba(34, 34, 34, 0.8); /* Semi-transparent dark background for contrast */
+    border-radius: 8px; /* Rounded corners for the section */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    text-align: center; /* Center text within the section */
+}
+
+/* Headings */
+.terms-section h1,
+.terms-section h2 {
+    font-family: 'Times New Roman', Times, serif; /* Use Times New Roman for all headings */
+    text-align: center; /* Center the headings */
+}
+
+.terms-section h1 {
+    margin-bottom: 20px; /* Space below the heading */
+    font-size: 2.5rem; /* Larger font size for main heading */
+    font-weight: bold; /* Bold font for main heading */
+}
+
+.terms-section h2 {
+    margin-top: 20px; /* Space above section headings */
+    margin-bottom: 10px; /* Space below section headings */
+    font-size: 1.8rem; /* Font size for section headings */
+    font-weight: bold; /* Bold font for section headings */
+}
+
+/* Paragraphs */
+.terms-section p {
+    font-family: 'Times New Roman', Times, serif; /* Use Times New Roman for paragraphs */
+    line-height: 1.6; /* Improve readability with line height */
+    margin-bottom: 15px; /* Space below paragraphs */
+    text-align: center; /* Center paragraphs */
+}
+
+@media (max-width: 768px) {
+    .terms-section {
+        margin: 20px; /* Smaller margin for mobile */
+        padding: 15px; /* Smaller padding for mobile */
+    }
+
+    .terms-section h1 {
+        font-size: 2rem; /* Smaller heading size for mobile */
+    }
+
+    .terms-section h2 {
+        font-size: 1.5rem; /* Smaller section heading size for mobile */
+    }
+}
+
+
+.artists-section {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(34, 34, 34, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.artists-section h1 {
+    text-align: center;
+    color: #f77062;
+    margin-bottom: 30px;
+}
+
+.artist {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.artist img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.artist-info {
+    flex: 1;
+}
+
+.artist-info h2 {
+    color: #f77062;
+    margin-bottom: 10px;
+}
+
+.artist-info p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.featured-work {
+    display: flex;
+    gap: 10px;
+}
+
+.featured-work img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+/* Responsive styling */
+@media (max-width: 960px) {
+    .artist {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .artist img {
+        margin-bottom: 10px;
+    }
+
+    .featured-work {
+        flex-wrap: wrap;
+    }
+
+    .featured-work img {
+        width: 100%;
+        max-width: 100px;
+        height: auto;
+    }
+}
+
+/* Update any image/video paths to use the new structure */
+.hero video {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
